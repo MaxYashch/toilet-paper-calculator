@@ -1,0 +1,107 @@
+@import 'normalize';
+
+@import 'fonts';
+
+//VARIABLES===============================================================================================
+$color-gray: #282828;
+$color-white: #fff;
+
+$font-size-md: 20px;
+$font-size-lg: 36px;
+$font-size-xl: 48px;
+//MIXINS===============================================================================================
+
+// @mixin font($font_name, $file_name, $weight, $style) {
+//     @font-face {
+//         font-family: $font_name;
+//         font-display: swap;
+//         src: url('../fonts/#{$file_name}.woff') format('woff'), url('../fonts/#{$file_name}.woff2') format('woff2');
+        
+//         font-style: #{$style};
+//         font-weight: #{$weight};
+//     }
+// }
+
+@mixin roboto {
+    font-family: 'Roboto',sans-serif;
+}
+
+body {
+    @include roboto;
+
+    background-color: $color-gray;
+    color: $color-white;
+}
+
+.section-outer {}
+
+.section-inner {
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: $font-size-xl;
+}
+
+.form-group {
+    &__title {
+        font-size: $font-size-md;
+    }
+    .control {
+        margin-top: 8px;
+    }
+}
+
+.control {
+    display: flex;
+
+    &__input,  
+    &__button {
+        @include roboto;
+        color: $color-white;
+        background: none;        
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        font-size: $font-size-lg;
+        color: $color-white;        
+        border-style: solid;
+        border-width: 0 0 1px;
+        border-bottom-color: $color-white;
+    }
+     
+    &__button {
+        padding: 8px 20px;
+        font-size: $font-size-md;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: .2s;
+    }
+
+    &__button:hover {
+        border-color: $color-white;
+    }
+
+    &__button:active {
+        transform: scale(0.9);
+    }
+
+    &__button + &__button {    // когда 2 кнопки последовательно
+        margin-left: 12px;
+    }
+
+}
+
+.form-group + .form-group {
+    margin-top: 24px;
+}
+
+.control__button {
+
+}
