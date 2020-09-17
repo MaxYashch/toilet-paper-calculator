@@ -1,12 +1,66 @@
-function testWebP(callback) {
-    var WebP = new Image();
-    WebP.onload = WebP.onerror = function () {
-        callback(WebP.height == 2);
+$(function () {
+    function calculate() {
+        const total = Number($('#total-length').val()) * 100;
+        let usedPerDay = 0;
+        let result = 0;
+
+        $('.control__input', '#users-list').each(function (index, item) {
+            usedPerDay = usedPerDay + Number($(item).val());
+        });
+
+        if ($('.control__button--active').data('type') === 'paper') {
+            const paperCount = total / Number($('#paper-length').val());
+            result = paperCount / usedPerDay;
+        } else {
+            result = total / usedPerDay;
+        }
+
+        $('#result').html(result.toFixed(0));
     };
-    webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA'
-}
-testWebP(function (support) {
-    if (support == true) {
-        document.querySelector('body').classList.add('webp');
-    }
+    function generateUsers() {
+        $('#users-list').empty();
+
+        const currentType = $('.control__button--active').data('type') === 'paper' ?
+            { unit: 'листочков', defaultValue: '1' } :
+            { unit: 'см', defaultValue: '10' };
+
+        for (let i = 1; i <= $('#users-count').val(); i++) {
+            $('#users-list').append(`
+                <div class="form-group form-group--row">
+                        <div class="form-group__title">Человек ${i} (${currentType.unit})</div>
+                        <div class="form-group__control control">
+                            <input type="text" class="control__input" value="${currentType.defaultValue}" />
+                        </div>
+                </div>
+            `);
+        }
+
+        calculate();
+    };
+
+    $('#total-length, #paper-length').blur(calculate);
+    $('#users-count').blur(generateUsers);
+
+    $('body').on('change', '#users-list .control__input', function () {
+        calculate();
+    })
+
+    $('.control__button').click(function () {
+        $(this)
+            .addClass('control__button--active')
+            .siblings()
+            .removeClass('.control__button--active');
+
+        if ($(this).data('type') === 'paper') {
+            $('#paper-length-block').removeClass('hidden');
+        } else {
+            $('#paper-length-block').addClass('hidden');
+        }
+
+        generateUsers();
+    });
+
+
+    generateUsers();
+    calculate();
 });

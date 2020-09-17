@@ -42,21 +42,59 @@ body {
     padding: 60px 20px;
 }
 
-h1 {
-    font-size: $font-size-xl;
+.hidden {
+    display: none;
 }
 
+h1 {
+    font-size: $font-size-xl;
+    margin: 0 0 50px;
+}
+
+h2 {
+    font-size: $font-size-md;
+    margin: 50px 0 0;
+
+    span {
+        font-size: $font-size-lg;
+    }
+}
+
+
 .form-group {
+    $parent: &;
+
+    & + & {
+        margin-top: 24px;
+    }
+
+    &--row {
+        display: flex;
+
+        #{$parent}__title {
+            margin-top: 18px;
+            margin-right: 12px;
+        }
+
+        & + & {
+            margin-top: 12px;
+        }
+    }
+
     &__title {
         font-size: $font-size-md;
     }
-    .control {
+    &__control {
         margin-top: 8px;
     }
 }
 
 .control {
     display: flex;
+
+    &-col {
+        flex-direction: column;
+    }
 
     &__input,  
     &__button {
@@ -98,9 +136,6 @@ h1 {
 
 }
 
-.form-group + .form-group {
-    margin-top: 24px;
-}
 
 .control__button {
 

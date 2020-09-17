@@ -105,15 +105,48 @@ body {
   padding: 60px 20px;
 }
 
+.hidden {
+  display: none;
+}
+
 h1 {
   font-size: 48px;
+  margin: 0 0 50px;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 50px 0 0;
+}
+
+h2 span {
+  font-size: 36px;
+}
+
+.form-group + .form-group {
+  margin-top: 24px;
+}
+
+.form-group--row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form-group--row .form-group__title {
+  margin-top: 18px;
+  margin-right: 12px;
+}
+
+.form-group--row + .form-group--row {
+  margin-top: 12px;
 }
 
 .form-group__title {
   font-size: 20px;
 }
 
-.form-group .control {
+.form-group__control {
   margin-top: 8px;
 }
 
@@ -121,6 +154,13 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.control-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .control__input,
@@ -163,10 +203,6 @@ h1 {
 
 .control__button + .control__button {
   margin-left: 12px;
-}
-
-.form-group + .form-group {
-  margin-top: 24px;
 }
 @supports (-webkit-appearance:none){
 

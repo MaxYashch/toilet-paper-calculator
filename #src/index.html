@@ -19,32 +19,54 @@
             <div class="form-group">
                 <div class="form-group__title">Длина рулона, м (средняя длина - 20м)</div>
                 <div class="form-group__control control">
-                    <input type="text" class="control__input">
+                    <input type="text" class="control__input" value="20" id="total-length" />
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="form-group__title">Метод подсчета</div>
                 <div class="form-group__control control">
-                    <button class="control__button">по длине</button>
-                    <button class="control__button">по листочкам</button>
+                    <button data-type="length" class="control__button control__button--active">по длине</button>
+                    <button data-type="paper" class="control__button">по листочкам</button>
+                </div>
+            </div>
+
+            <div class="form-group hidden" id='paper-length-block'>
+                <div class="form-group__title">Длина листочка, м (средняя длина - 14 см)</div>
+                <div class="form-group__control control">
+                    <input type="text" class="control__input" value="14" id='paper-length' />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-group__title">Сколько человек дома</div>
+                <div class="form-group__control control">
+                    <input type="text" class="control__input" value="1" id="users-count" />
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="form-group__title">Длина листочка,м (средняя длина - 14 см)</div>
-                <div class="form-group__control control">
-                    <input type="text" class="control__input">
+                <div class="form-group__title">Использовано в день</div>
+                <div class="form-group__control control control-col" id="users-list">
+                    <!-- <div class="form-group form-group--row">
+                        <div class="form-group__title">Человек 1 (см)</div>
+                        <div class="form-group__control control">
+                            <input type="text" class="control__input" value="10">
+                        </div>
+                    </div>
+                    <div class="form-group form-group--row">
+                        <div class="form-group__title">Человек 2, см</div>
+                        <div class="form-group__control control">
+                            <input type="text" class="control__input" value="10">
+                        </div>
+                    </div> -->
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="form-group__title">Сколько человек дома</div>
-            <div class="form-group__control control">
-                <input type="text" class="control__input">
-            </div>
-        </div>
+            <h2>Хватит на <span id="result">10</span> дней</h2>
+
+
         </div>
 
     </section>
